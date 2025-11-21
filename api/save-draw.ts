@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { nanoid } from 'nanoid';
-import { db } from './db/client';
-import { draws } from './db/schema';
+import { db } from './db/client.js';
+import { draws } from './db/schema.js';
 
 export default async function handler(
   req: VercelRequest,
