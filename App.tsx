@@ -360,6 +360,19 @@ const App: React.FC = () => {
 
   const shareDraw = async () => {
     try {
+      // Check if we're already viewing a shared draw
+      const urlParams = new URLSearchParams(window.location.search);
+      const existingId = urlParams.get('id');
+
+      if (existingId) {
+        // Already have an ID, just copy the current URL
+        await navigator.clipboard.writeText(window.location.href);
+        setNotification("Link copied to clipboard!");
+        setTimeout(() => setNotification(null), 3000);
+        return;
+      }
+
+      // No existing ID, create a new share
       setNotification("Generating share link...");
 
       const response = await fetch('/api/save-draw', {
