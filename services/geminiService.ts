@@ -9,7 +9,7 @@ export const analyzeFullDraw = async (groups: Group[]): Promise<string> => {
   if (!apiKey) return "APIキーが設定されていません。";
 
   const ai = new GoogleGenAI({ apiKey });
-  const model = 'gemini-2.5-flash'; // Using 2.5 flash for speed/efficiency
+  const model = 'gemini-3-pro-preview'; // Using 2.5 flash for speed/efficiency
 
   const groupSummary = groups.map(g => `グループ${g.name}: ${g.teams.map(t => t.name).join(', ')}`).join('\n');
   const prompt = `
